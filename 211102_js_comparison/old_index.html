@@ -1,0 +1,49 @@
+<html>
+<body>
+
+<div class="todo">
+ <h3>할일</h3>
+ <ul class = "list"></ul>
+	<input class="desc"type="text"/>
+	<button onClick="add()">추가</button>
+	<button onClick="save()">서버 저장</button>
+</div>
+/
+<script>
+	/**
+	 * 
+	 * 
+	 * 
+	 todoList는 사실 필요가 없다
+	 자체가 html에 저장되어있기때문.
+	 dom api를 사용하는 함수
+	
+	*/
+	let currentId= 1;
+	const todoList=[];
+	function add(){
+		const doc = document.querySelector('.todo .desc');
+		const todo = {id: currentId++, desc:doc.value};
+		todoList.push(todo);
+		const listEl = document.querySelector('.todo .list');
+		const todoEl = makeTodoElement(todo);
+		listEl.appendChild(todoEl);
+	}
+
+	function save(todo){
+		const todoEl 
+		/**
+		 * 
+		 * 
+		 * */
+	}
+	function delete(e){
+		/**
+		 * 
+		 * 
+		 * 
+		 * */
+	}
+</script>
+</body>
+</html>
