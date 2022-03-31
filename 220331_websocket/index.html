@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Docu</title>
+</head>
+
+	<script>
+	</script>
+<body>
+	<h4>채팅2</h4> 
+
+	<input id="chat" type="text"></input>
+	<button id='send' >보내기</button>
+	<li id="list"></li>
+	<script>
+		
+		let li = document.getElementById('list');
+		let inputText = document.getElementById('chat');
+
+		function btnClick(){
+			let txt = inputText.value
+			inputText.value = ""
+			send(txt)
+		}
+		function send(txt){
+			socket.send(txt)
+		}
+
+		function receive(rslt){
+			
+			let line = document.createElement('ul')
+			
+			li.appendChild(line);
+			line.innerHTML = rslt;
+			console.log(line);
+		}
+		let btn = document.getElementById('send')
+		console.log(btn)
+		btn.addEventListener("click",btnClick);
+
+		let socket  = new WebSocket("ws://localhost:8081");
+		socket.onmessage = function(e){
+			console.log(e)
+			receive(e.data)
+		}
+	</script>
+</body>
+</html>
